@@ -31,16 +31,6 @@ This tiny bash script fetches ip information of your system. It uses  `curl` to
   > apt-get install curl jq ipcalc
 ```
 
-2. **Optional:** Install and enable dependencies for using gerste through tor
-```bash
-  # Arch based systems
-  > pacman -S tor torsocks
-  # Debian based systems
-  > apt-get install tor torsocks
-
-  > systemctl start tor.service
-```
-
 > [!NOTE]
 > Systemd is not required for execution
 
@@ -57,10 +47,7 @@ This tiny bash script fetches ip information of your system. It uses  `curl` to
 #### Command overview:
 
 ```
-  > getip [options]           Usage in terminal (only as root)
-
-  > getip -t                  Use torsocks to send traffic
-  > getip --tor               through tor network.
+  > getip [options]           Usage in terminal
 
   > getip -v                  Get current version
   > getip --version
