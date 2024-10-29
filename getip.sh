@@ -66,21 +66,21 @@ for parameter in "$@"; do
 done
 
 # Get local ip and interface
-interfaces=("wlan0" "wlp42s0" "eth0" "enp42s0")
+readonly interfaces=("wlan0" "wlp42s0" "eth0" "enp42s0")
 for iface in "${interfaces[@]}"; do
     # Check if interface is up
     if ip link show "$iface" > /dev/null 2>&1; then
         # Extract local ip address
-        local_ip_address=$(ip addr show "$iface" | grep 'inet ' | awk '{print $2}')
-        interface=${iface}
+        local_ip_address=$(ip addr show "$iface" | grep 'inet ' | awk '{print $2}') && readonly local_ip_address
+        readonly interface=${iface}
     fi
 done
 
 # Use ipcalc to get network-, netmask and broadcast-address
-ip_calc_output=$(ipcalc "$local_ip_address")
-local_network=$(echo "$ip_calc_output" | grep -oP 'Network:\s+\K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+(/[0-9]{1,2})?')
-local_netmask=$(echo "$ip_calc_output" | grep -oP 'Netmask:\s+\K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
-broad_local_ip_address=$(echo "$ip_calc_output" | grep -oP 'Broadcast:\s+\K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
+ip_calc_output=$(ipcalc "$local_ip_address") && readonly ip_calc_output
+local_network=$(echo "$ip_calc_output" | grep -oP 'Network:\s+\K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+(/[0-9]{1,2})?') && readonly local_network
+local_netmask=$(echo "$ip_calc_output" | grep -oP 'Netmask:\s+\K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+') && readonly local_netmask
+broad_local_ip_address=$(echo "$ip_calc_output" | grep -oP 'Broadcast:\s+\K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+') && readonly broad_local_ip_address
 
 # Get global ip from https://ifconfig.me/
 if ! public_ip_address=$(curl -s --connect-timeout 5 --max-time 8 https://ifconfig.me/ip) && readonly public_ip_address; then
