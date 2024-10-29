@@ -31,9 +31,6 @@ This tiny bash script fetches ip information of your system. It uses  `curl` to
   > apt-get install curl jq ipcalc
 ```
 
-> [!NOTE]
-> Systemd is not required for execution
-
 ## :cd: Installation
 
 ```bash
