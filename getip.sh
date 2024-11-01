@@ -3,11 +3,11 @@
 #      Name    : getip
 #      Version : 0.1.0
 #      License : GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0)
-#      GitHub  : https://github.com/paranoidpeter/getip
-#      Author  : paranoidpeter
-#      Mail    : peterparanoid@proton.me
+#      GitHub  : https://github.com/parapeter/getip
+#      Author  : parapeter
+#      Mail    : parapeter-git@proton.me
 #
-#      Copyright (c) 2024 paranoidpeter
+#      Copyright (c) 2024 parapeter
 #
 #      This program is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
@@ -105,8 +105,8 @@ public_timezone=$(echo "$ipinfo_io_response" | jq -r '.timezone') && readonly pu
 
 # Print results after validation
 [[ -n "$public_ip_address" && "$public_ip_address" != "null" ]] && echo -e "${BLUE}GLOBAL:${LIGHT_GREEN} ${public_ip_address}${RESET}"
-[[ -n "$interface" ]] && echo -e "${LIGHT_BLUE}  INTERFACE: ${interface}${RESET}"
 [[ "$local_ip_address" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(/[0-9]{1,2})?$ ]] && echo -e "${LIGHT_BLUE}  LOCAL: ${local_ip_address}${RESET}"
+[[ -n "$interface" ]] && echo -e "${LIGHT_BLUE}  INTERFACE: ${interface}${RESET}"
 [[ "$local_network" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(/[0-9]{1,2})?$ ]] && echo -e "${LIGHT_BLUE}  NETWORK: ${local_network}${RESET}"
 [[ "$local_netmask" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] && echo -e "${LIGHT_BLUE}  NETMASK: ${local_netmask}${RESET}"
 [[ "$broad_local_ip_address" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] && echo -e "${LIGHT_BLUE}  BROADCAST: ${broad_local_ip_address}${RESET}"
